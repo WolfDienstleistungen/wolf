@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wolf-bau-tiefbau.drym1.chatgpt.site/sitemap.xml

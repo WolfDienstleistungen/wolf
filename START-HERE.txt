@@ -1,0 +1,7 @@
+WOLF Website
+
+1. Extract the entire ZIP archive.
+2. Open wolf-main/index.html in Chrome, Edge, Firefox or Safari.
+3. Keep the assets folder beside the HTML files.
+
+Deutsch: ZIP vollstaendig entpacken und index.html im Browser oeffnen.

@@ -1,0 +1,30 @@
+WOLF Dienstleistungen – Bilder
+
+NEUE HERO-MOTIVE
+assets/heroes/home-bau.webp       Startseite: Bau & Tiefbau
+assets/heroes/home-garten.webp    Startseite: Garten & Natur
+assets/heroes/home-bagger.webp    Startseite: Bagger & Fahrer
+assets/heroes/leistungen.webp    Leistungen
+assets/heroes/ueber-uns.webp      Über uns
+assets/heroes/einblicke.webp      Einblicke
+assets/heroes/kontakt.webp        Kontakt
+
+Diese sieben Motive wurden mit dem integrierten Bildgenerator anhand der gelieferten
+Fotos gestaltet. Sie dienen als Werbemotive und sind keine unveränderten Projektaufnahmen.
+Die Texte werden separat im HTML angezeigt. Die Dateien lassen sich deshalb unabhängig
+von Überschriften, Buttons und Seitentexten verwenden.
+Die vollständigen Gestaltungs-Prompts liegen in assets/heroes/BILDGESTALTUNG.txt.
+
+ORIGINALFOTOS
+Alle 41 ursprünglichen Bilder unter assets/projekte/ und ihre Vorschaubilder sind unverändert.
+Die Einblicke-Galerie zeigt weiterhin alle 41 Originalfotos mit Filtern und Vergrößerung.
+Die Leistungsseiten verwenden weiterhin die vorhandenen Originalaufnahmen.
+Alle Bilder sind lokal enthalten; externe Bilddienste werden nicht benötigt.
+
+LOGO UND KONTAKT-ICON
+assets/wolf-logo.png: neu gezeichnetes WOLF-Logo mit echtem transparentem Hintergrund, 1774 × 887 Pixel. Gestaltung an der gelieferten WOLF-Identität orientiert.
+assets/icons/whatsapp.svg: weißes WhatsApp-Symbol für den runden Kontaktbutton.
+Die Gestaltungshinweise für das WOLF-Logo stehen in assets/LOGO-INFO.txt.
+
+STANDORTMOTIV
+assets/heroes/murrhardt-location.webp: KI-gestaltetes Regionalmotiv für die Standortkarte auf kontakt.html. Es zeigt eine typische Ortschaft in den bewaldeten Hügeln Baden-Württembergs und ist keine dokumentarische Aufnahme eines konkreten Orts.

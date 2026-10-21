@@ -1,0 +1,58 @@
+WOLF Dienstleistungen – Layout- und Logo-Update, 19.10.2026
+
+START
+ZIP vollständig entpacken und index.html öffnen.
+Zum Hochladen alle HTML-Dateien sowie den kompletten Ordner assets/ gemeinsam verwenden.
+
+AKTUALISIERT
+- Auf dem Desktop stehen Leistungsfoto und persönliche Anfragekarte bündig nebeneinander und sind gleich hoch.
+- Auf kleinen Bildschirmen folgen Foto und Anfragekarte untereinander.
+- Die neun Links „Alle 41 Projektfotos ansehen →“ wurden entfernt.
+- Kleine Bereichsbezeichnungen über den Haupttiteln der Seiten-Heros sind sichtbar.
+- Der schwebende WhatsApp-Kontakt ist ein runder Button mit Logo ohne Text.
+- Neues eigenständiges WOLF-Logo mit transparentem Hintergrund in Kopf- und Fußbereich.
+- Standortkarte auf Kontakt mit einem passenden Panoramabild für die Region Murrhardt und Kirchenkirnberg.
+- Drei neue, eigens gestaltete Startseitenmotive: Bau & Tiefbau, Garten & Natur, Bagger & Fahrer.
+- Eigene fotografische Hero-Bilder für Leistungen, Über uns, Einblicke und Kontakt.
+- Die vorhandenen Breiten und Größenregeln des Haupt-Heros bleiben erhalten.
+- Bestehender automatischer Bildwechsel alle 4 Sekunden mit Pause, Pfeilen und Wischsteuerung.
+- Der grüne Vertrauensstreifen direkt unter dem Hero ist auf den vier Übersichtsseiten identisch zur Startseite.
+- Einheitlicher unterer Anfrage-Streifen und Fußbereich im Stil und in den Maßen der Startseite.
+- Lesbare weiße Texte auf dunklen Bildverläufen; mobile Bildausschnitte auf das Hauptmotiv ausgerichtet.
+- Neue Bilder als WebP ohne eingebrannte Überschriften; alle Texte bleiben im HTML bearbeitbar.
+- Brotkrümelzeilen (Startseite / …) vollständig entfernt.
+- Alle neun Leistungsdetails öffnen ohne Hero; Titel und Foto stehen direkt im Seiteninhalt.
+- Korrigierter Kontakt-Link auf der Über-uns-Seite.
+- Verbesserte Rückmeldung beim Filtern von Leistungen und Bildern.
+
+UMFANG
+17 HTML-Seiten, sämtliche lokalen Bilder, CSS, JavaScript und Icons sind enthalten.
+Neue Hero-Bilder: assets/heroes/ (sieben WebP-Dateien).
+Die 41 Originalfotos und 41 zugehörigen Vorschaubilder in assets/projekte/ sind unverändert.
+Die Gestaltungshinweise und Prompts stehen in assets/heroes/BILDGESTALTUNG.txt.
+
+VERWENDUNG
+Die sieben neuen Hero-Motive sind KI-gestaltete Werbemotive auf Basis der gelieferten Fotos.
+Die ursprünglichen Fotos bleiben in der Projektgalerie und in den Leistungsbereichen erhalten.
+Das Kontaktformular versendet Anfragen über FormSubmit an info@wolf-landschaftspflege.de.
+Vor der ersten Zustellung ist eine einmalige E-Mail-Aktivierung erforderlich (siehe KONTAKTFORMULAR-INFO.txt).
+Bei Sendefehlern kann die Nachricht per E-Mail/WhatsApp vorbereitet oder kopiert werden.
+Die Website ist statisches HTML/CSS/JavaScript; sie ist kein WordPress-/Elementor-Import.
+Beim Wechsel der Domain canonical/og:url, sitemap.xml und robots.txt anpassen.
+Die vorhandenen Rechtsseiten und Anbieterangaben wurden in dieser Überarbeitung nicht geändert.
+
+PRÜFUNG DIESER VERSION
+Lokale Seiten- und Asset-Verweise, Anker, Bilddateien, Navigation, gemeinsame Bereiche
+und JavaScript-Syntax wurden geprüft. Die neuen Bilder wurden visuell geprüft.
+Die vorhandenen Regeln für die Maße des Haupt-Heros und das Slider-Skript sind unverändert.
+Eine vollständige Browserprüfung auf Desktop und Mobilgerät war hier nicht verfügbar.
+
+بالعربية
+افتح index.html بعد فك الضغط بالكامل.
+أُضيفت 3 صور للرئيسية وصورة لكل من Leistungen وÜber uns وEinblicke وKontakt.
+حُفظ عرض الهيرو وقواعد مقاساته، مع توحيد الشريط أسفله والشريط السفلي مع الرئيسية.
+صور الهيرو الجديدة موجودة في assets/heroes، وصور الأعمال الأصلية محفوظة كما هي.
+
+التحديث الإضافي: صورة Kontakt جديدة، حذف مسارات Startseite / …، وصفحات تفاصيل الخدمات تفتح دون هيرو.
+
+التحديث الأخير: توحيد ارتفاع صورة الخدمة وبطاقة التواصل على الكمبيوتر، حذف روابط Alle 41 Projektfotos ansehen، إعادة العناوين الصغيرة إلى هيرو الصفحات، أيقونة واتساب فقط، وشعار WOLF مستقل بخلفية شفافة.

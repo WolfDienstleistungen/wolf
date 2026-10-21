@@ -1,0 +1,28 @@
+WOLF Website – Kontaktformular / Contact form / نموذج إرسال الطلبات
+
+العربية
+تم تعديل نموذج Kontakt بحيث يرسل الطلبات مباشرة إلى:
+info@wolf-landschaftspflege.de
+عند الضغط على "Anfrage jetzt senden"، دون الحاجة لفتح برنامج البريد.
+
+مهم – تفعيل الخدمة لأول مرة:
+1. ارفع ملفات الموقع إلى الاستضافة، وافتح kontakt.html من رابط HTTPS (وليس file://).
+2. أرسل طلباً تجريبياً من النموذج بعد نشر الموقع (ببيانات اختبار فقط).
+3. ستصل إلى info@wolf-landschaftspflege.de رسالة تفعيل من FormSubmit. افتح البريد واضغط رابط التفعيل.
+4. بعد التفعيل أرسل طلباً تجريبياً آخر وتحقق من وصوله (وتحقق من مجلد الرسائل غير المرغوبة).
+
+حتى تتم عملية التفعيل، لا يمكن ضمان وصول الطلبات. إذا فشل الإرسال، تظهر خيارات إرسال بالبريد أو واتساب.
+الموقع ثابت (HTML)؛ تم استخدام FormSubmit لاستلام الطلبات دون إضافة خادم بريد أو كلمات مرور.
+يُرجى مراجعة سياسة الخصوصية والاشتراطات القانونية قبل النشر: البيانات تُنقل لخدمة طرف ثالث.
+لم يتم إجراء إرسال فعلي إلى بريدك في أثناء تجهيز هذه النسخة.
+
+Deutsch
+Die Kontaktanfragen werden per FormSubmit an info@wolf-landschaftspflege.de weitergeleitet.
+Das Kontaktformular funktioniert nach Veröffentlichung der Website auf HTTPS. Beim ersten Absenden
+sendet FormSubmit eine Aktivierungs-E-Mail an die Empfängeradresse. Der Postfachinhaber muss den
+Aktivierungslink bestätigen, erst danach können Eingänge als zugestellt betrachtet werden.
+Anschließend bitte erneut testen und auch den Spam-Ordner prüfen.
+Wenn die Übertragung scheitert, sind E-Mail-/WhatsApp-Alternativen und Kopieren verfügbar.
+FormSubmit ist ein externer Auftragsdatenverarbeiter; Datenschutz und mögliche Drittlandübermittlungen
+sind vor dem Livegang fachlich zu prüfen. Die Datenschutzhinweise wurden entsprechend aktualisiert.
+Bei lokaler file://-Vorschau funktioniert der Direktversand nicht.
