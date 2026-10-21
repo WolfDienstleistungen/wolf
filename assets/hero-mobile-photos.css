@@ -1,0 +1,29 @@
+/* Mobile-only original customer photographs for the three homepage hero slides.
+   Desktop slides, text, links, controls and other pages remain unchanged. */
+@media (max-width:700px) {
+  .home-hero.hero-slider .hero-slide .hero-image {
+    object-fit:cover;
+    object-position:50% 50%;
+  }
+  /* Balanced contrast for legible white copy, while keeping the vivid sky
+     and the construction machines clearly visible below the headline. */
+  .home-hero.hero-slider .hero-slide .hero-shade {
+    background:linear-gradient(
+      180deg,
+      rgba(2,16,24,.70) 0%,
+      rgba(2,18,25,.64) 21%,
+      rgba(2,17,23,.48) 44%,
+      rgba(2,17,22,.10) 65%,
+      rgba(2,17,22,.20) 80%,
+      rgba(2,17,22,.46) 100%
+    );
+  }
+  .home-hero.hero-slider .hero-slide .hero-copy {
+    position:relative;
+    z-index:2;
+  }
+  /* Slightly more breathing room between the hero description and CTA buttons on phones only. */
+  .home-hero.hero-slider .hero-slide .hero-copy .button-row {
+    margin-top:40px;
+  }
+}

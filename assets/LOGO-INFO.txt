@@ -1,0 +1,8 @@
+WOLF Dienstleistungen – eigenständiges Logo, 19.10.2026
+
+Die vorhandene WOLF-Identität wurde auf Basis des mitgelieferten Website-Screenshots neu gezeichnet.
+Datei: wolf-logo.png, 1774 × 887 Pixel, PNG mit transparentem Hintergrund.
+Die Datei wird im Kopfbereich in ihren Originalfarben und im Fußbereich per CSS weiß dargestellt.
+
+Bildgestaltungs-Prompt:
+Use case: logo-brand. Create ONE clean high-resolution standalone transparent-background logo for WOLF DIENSTLEISTUNGEN. Input reference: the supplied screenshot of the WOLF website. Only the EXISTING LOGO IN THE TOP LEFT is the identity reference; ignore every other part of the screenshot. Faithfully redraw and polish that existing brand: very bold heavy black uppercase word WOLF, smaller black uppercase DIENSTLEISTUNGEN neatly centered directly below, an open dynamic elliptical swoosh around the lettering in forest green #004b30 and fresh leaf green #6dbb2f, and two crisp green leaves attached on the right of the oval. Match the reference's overall oval shape, clear flat geometry, strong letterforms and green leaf identity. Main word exactly 'WOLF'; secondary line exactly 'DIENSTLEISTUNGEN'. Reproduce the correct spelling with clean professional consistent typography and good optical spacing. Horizontal approximately 2:1 canvas, logo fills about 90 percent of the width and height with comfortable safe padding and no clipped edges. Flat vector-like graphic, crisp antialiased edges, no gradient, no shadows, no bevel, no texture, no photographs, no webpage, no extra tagline, no mockup, no background plate, no border. Real transparent alpha everywhere outside the green/black logo. Make the small subtitle readable and sharp, not distorted.

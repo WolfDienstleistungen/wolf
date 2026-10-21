@@ -1,0 +1,108 @@
+/* Fotogalerie für die einzelnen Leistungsseiten – ergänzt das bestehende Design. */
+.detail-showcase-grid .service-image-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #edf3ea;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  cursor: zoom-in;
+}
+.detail-showcase-grid .service-image-open:hover img { transform: scale(1.04); }
+.detail-showcase-grid .service-image-open:focus-visible {
+  outline: 3px solid var(--green, #004b30);
+  outline-offset: 3px;
+}
+.service-photo-dialog {
+  box-sizing: border-box;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  width: min(1080px, calc(100% - 32px));
+  max-width: 1080px;
+  max-height: calc(100dvh - 32px);
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  color: #163b30;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, .42);
+  overflow: hidden;
+}
+.service-photo-dialog::backdrop {
+  background: rgba(3, 15, 11, .88);
+  backdrop-filter: blur(5px);
+}
+.service-photo-shell { position: relative; }
+.service-photo-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #101a16;
+  min-height: min(55dvh, 480px);
+  overflow: hidden;
+}
+.service-photo-image {
+  display: block;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: min(75dvh, 820px);
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.service-photo-nav,
+.service-photo-close {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.36);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .58);
+  color: #fff;
+  cursor: pointer;
+  transition: background .18s ease;
+}
+.service-photo-nav:hover,
+.service-photo-close:hover { background: #004b30; }
+.service-photo-nav:focus-visible,
+.service-photo-close:focus-visible { outline: 3px solid #9bc94b; outline-offset: 3px; }
+.service-photo-nav svg,
+.service-photo-close svg { height: 24px; width: 24px; }
+.service-photo-prev { left: 14px; top: 50%; transform: translateY(-50%); }
+.service-photo-next { right: 14px; top: 50%; transform: translateY(-50%); }
+.service-photo-close { top: 14px; right: 14px; }
+.service-photo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 66px;
+  padding: 16px 23px;
+  background: #fff;
+}
+.service-photo-caption { font-size: 15px; font-weight: 700; line-height: 1.4; }
+.service-photo-counter { white-space: nowrap; color: #527060; font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+@media (max-width: 700px) {
+  .service-photo-dialog { width: calc(100% - 16px); max-height: calc(100dvh - 16px); border-radius: 8px; }
+  .service-photo-stage { min-height: min(46dvh, 340px); }
+  .service-photo-image { max-height: 72dvh; }
+  .service-photo-nav { width: 40px; height: 40px; }
+  .service-photo-prev { left: 7px; }
+  .service-photo-next { right: 7px; }
+  .service-photo-close { top: 9px; right: 9px; width: 38px; height: 38px; }
+  .service-photo-footer { padding: 13px 16px; min-height: 60px; }
+  .service-photo-caption { font-size: 13px; }
+}

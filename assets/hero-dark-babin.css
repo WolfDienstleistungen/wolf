@@ -1,0 +1,176 @@
+/* WOLF – cinematic full-image hero inspired by BABIN BAU (dark photo + white copy). */
+/* This layer intentionally only styles the homepage carousel. */
+.home-hero.hero-slider{
+  height:clamp(570px, calc(100svh - 139px), 790px);
+  min-height:570px;
+  background:#10231b;
+  overflow:hidden;
+}
+.hero-slider .hero-image{
+  position:absolute;inset:0;
+  width:100%;height:100%;max-width:none;
+  object-fit:cover;object-position:58% center;
+}
+.hero-slider .hero-shade{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(2,15,12,.88) 0%,rgba(5,22,19,.73) 29%,rgba(5,20,19,.43) 54%,rgba(5,19,20,.20) 78%,rgba(5,19,20,.16) 100%),
+    linear-gradient(0deg,rgba(4,16,14,.53) 0%,transparent 39%);
+}
+.hero-slider::after{
+  height:186px;
+  background:linear-gradient(to bottom,rgba(3,13,12,0),rgba(3,13,12,.34) 50%,rgba(3,12,11,.67));
+}
+.hero-slider .hero-inner{
+  height:100%;min-height:0;
+  padding-top:0;padding-bottom:67px;
+  position:relative;z-index:2;
+}
+.hero-slider .hero-copy{max-width:680px;padding:0;}
+.hero-slider .hero-overline{
+  color:#cee5ca;font-size:11px;font-weight:800;letter-spacing:.16em;
+  margin-bottom:20px;text-shadow:0 1px 8px #051511a1;
+}
+.hero-slider .hero-heading,
+.hero-slider .hero-heading strong{
+  color:#fff;
+  text-shadow:0 2px 25px rgba(3,13,12,.25);
+}
+.hero-slider .hero-heading{
+  font-size:clamp(46px,4.85vw,72px);
+  line-height:1.035;
+  letter-spacing:-.048em;
+  font-weight:900;
+}
+.hero-slider .hero-heading strong{font-size:1.05em;font-weight:900;}
+.hero-slider .hero-tagline{
+  color:#fff;
+  margin-top:18px;
+  font-size:clamp(19px,2vw,27px);
+  font-weight:750;
+}
+.hero-slider .hero-desc{
+  color:#e5ece8;
+  font-size:16px;
+  line-height:1.66;
+  margin-top:18px;
+  max-width:510px;
+}
+.hero-slider .hero-copy .button-row{margin-top:27px;gap:11px;}
+.hero-slider .hero-copy .button{
+  min-height:44px;
+  font-size:13px;
+  font-weight:750;
+  padding:10px 18px;
+  gap:13px;
+  border-radius:3px;
+  box-shadow:none;
+}
+.hero-slider .hero-copy .button:not(.button-outline){
+  color:#fff;background:#0b6a43;border-color:#0f8453;
+}
+.hero-slider .hero-copy .button:not(.button-outline):hover{
+  background:#117f50;border-color:#22a36a;
+}
+.hero-slider .hero-copy .button-outline{
+  color:#fff;
+  background:rgba(4,18,14,.22);
+  border-color:rgba(255,255,255,.82);
+  backdrop-filter:blur(3px);
+}
+.hero-slider .hero-copy .button-outline:hover{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+}
+.hero-slider .hero-copy .button .icon{width:17px;height:17px;}
+.hero-slider .hero-controls{
+  bottom:26px;
+  min-height:44px;
+  color:#fff;
+}
+.hero-slider .hero-navigation{gap:7px;}
+.hero-slider .hero-control{
+  width:43px;height:43px;
+  border-radius:2px;
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.65);
+}
+.hero-slider .hero-control .icon{width:17px;height:17px;}
+.hero-slider .hero-count strong{font-size:22px;}
+.hero-slider .hero-count span{font-size:12px;}
+.hero-slider .hero-tab{width:42px;}
+.hero-slider .hero-tab-track{height:3px;}
+.hero-slider .hero-progress-group{gap:23px;}
+.hero-slider .hero-actions{gap:26px;}
+.hero-slider .hero-discover{font-size:11px;letter-spacing:.105em;gap:14px;}
+.hero-slider .hero-discover svg{width:19px;height:19px;}
+@media(min-width:1600px){
+ .home-hero.hero-slider{height:clamp(610px,calc(100svh - 139px),850px);}
+}
+@media(max-width:920px){
+ .home-hero.hero-slider{height:clamp(580px,calc(100svh - 118px),730px);}
+ .hero-slider .hero-heading{font-size:clamp(43px,5.5vw,58px);}
+ .hero-slider .hero-overline{font-size:10px;}
+ .hero-slider .hero-controls{bottom:19px;}
+ .hero-slider .hero-control{width:40px;height:40px;}
+ .hero-slider .hero-actions{gap:16px;}
+ .hero-slider .hero-progress-group{gap:14px;}
+ .hero-slider .hero-tab{width:34px;}
+}
+@media(max-width:700px){
+ .home-hero.hero-slider{
+   height:clamp(620px,calc(100svh - 111px),740px);
+   min-height:620px;
+   background:#10231b;
+ }
+ .hero-slider .hero-image{
+   inset:0;top:0;bottom:0;left:0;right:0;
+   width:100%;height:100%;object-position:60% center;
+ }
+ .hero-slider .hero-shade{
+   background:
+      linear-gradient(180deg,rgba(3,14,14,.88) 0%,rgba(3,17,16,.79) 38%,rgba(3,17,16,.37) 73%,rgba(3,17,16,.52) 100%),
+      linear-gradient(90deg,rgba(3,17,16,.51),rgba(3,17,16,.12));
+ }
+ .hero-slider::after{
+   height:160px;
+   background:linear-gradient(to bottom,transparent,rgba(3,14,12,.28) 36%,rgba(3,14,12,.78));
+ }
+ .hero-slider .hero-inner{
+   display:block;
+   height:100%;min-height:0;
+   padding-top:clamp(48px,9svh,88px);
+   padding-bottom:115px;
+ }
+ .hero-slider .hero-copy{max-width:100%;}
+ .hero-slider .hero-overline{font-size:9px;letter-spacing:.1em;margin-bottom:15px;}
+ .hero-slider .hero-heading{font-size:clamp(36px,9.2vw,48px);line-height:1.06;}
+ .hero-slider .hero-heading strong{font-size:1.02em;}
+ .hero-slider .hero-tagline{color:#fff;font-size:clamp(17px,4.5vw,21px);margin-top:14px;}
+ .hero-slider .hero-desc{color:#e2ebe6;font-size:14px;line-height:1.55;margin-top:15px;}
+ .hero-slider .hero-copy .button-row{margin-top:21px;gap:9px;}
+ .hero-slider .hero-copy .button{font-size:12px;padding:9px 12px;gap:9px;min-height:41px;}
+ .hero-slider .hero-copy .button .icon{width:15px;height:15px;}
+ .hero-slider .hero-controls{bottom:12px;row-gap:4px;column-gap:7px;}
+ .hero-slider .hero-control{width:35px;height:35px;}
+ .hero-slider .hero-control .icon{width:15px;height:15px;}
+ .hero-slider .hero-count strong{font-size:18px;}
+ .hero-slider .hero-count span{font-size:10px;}
+ .hero-slider .hero-tab{width:25px;}
+ .hero-slider .hero-tabs{gap:5px;}
+ .hero-slider .hero-progress-group{gap:10px;}
+ .hero-slider .hero-navigation{gap:5px;}
+ .hero-slider .hero-discover{font-size:10px;min-height:29px;gap:8px;}
+}
+@media(max-width:370px){
+ .home-hero.hero-slider{height:clamp(625px,calc(100svh - 111px),710px);min-height:625px;}
+ .hero-slider .hero-heading{font-size:34px;}
+ .hero-slider .hero-tagline{font-size:16px;}
+ .hero-slider .hero-copy .button{font-size:11px;padding:9px 10px;gap:6px;}
+ .hero-slider .hero-control{width:32px;height:32px;}
+ .hero-slider .hero-tab{width:19px;}
+ .hero-slider .hero-progress-group{gap:7px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-slider .hero-discover svg{transition:none;}
+}

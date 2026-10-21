@@ -1,0 +1,66 @@
+/* WOLF photographic heroes. Existing hero widths and heights are preserved. */
+.hero-slider #hero-bau .hero-image { object-position:72% center; }
+.hero-slider #hero-garten .hero-image { object-position:67% center; }
+.hero-slider #hero-maschine .hero-image { object-position:74% center; }
+
+.page-hero.page-hero-photo { isolation:isolate; background:#10231b; }
+.page-hero-photo > .page-hero-image {
+  position:absolute; inset:0; width:100%; height:100%; max-width:none;
+  object-fit:cover; object-position:var(--hero-position,70% 50%); z-index:-2;
+}
+.page-hero-photo::before {
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:linear-gradient(90deg,rgba(3,19,14,.91) 0%,rgba(3,19,14,.79) 36%,rgba(3,19,14,.40) 67%,rgba(3,19,14,.18) 100%);
+}
+.page-hero-photo h1 { color:#fff; text-shadow:0 2px 20px #04180f45; }
+.page-hero-photo > .container > p:not(.eyebrow) { color:#ebf2ed; }
+.page-hero-photo .eyebrow { color:#d2e7bd; }
+.page-hero-photo .eyebrow span { background:#b0cf90; }
+.page-hero-photo .breadcrumbs,
+.page-hero-photo .breadcrumbs span[aria-current] { color:#e2eae2; }
+.page-hero-photo .breadcrumbs a { color:#e2eae2; }
+.page-hero-photo .breadcrumbs a:hover { color:#fff; }
+.page-hero-photo .breadcrumbs > span:not([aria-current]) { color:#9fbaa7; }
+.page-hero-photo .breadcrumbs a:focus-visible { outline-color:#cfecad; }
+
+/* One shared full-width band and footer layout on every page. */
+.trust-band, .home-cta-band, .site-footer.wolf-footer { width:100%; }
+.trust-band { position:relative; }
+.trust-band .trust-title { min-width:0; }
+.filter-bar button { min-height:44px; }
+.filter-bar button:focus-visible { outline:3px solid #7fb13a; outline-offset:3px; }
+.service-card:focus-visible { outline:3px solid #7fb13a; outline-offset:5px; }
+
+/* Retain banner spacing after the breadcrumb rows are removed. */
+.page-hero.page-hero-photo { padding-top:80px; }
+
+/* Service cards lead directly to normal article content, without a hero. */
+.section.service-detail-section { padding-top:46px; }
+.service-intro { margin:0 0 30px; }
+.service-back {
+  display:inline-flex; align-items:center; gap:9px; color:var(--green);
+  font-size:13px; font-weight:700; margin-bottom:20px; min-height:32px;
+}
+.service-back:hover { text-decoration:underline; text-underline-offset:4px; }
+.service-intro h1 {
+  font-size:clamp(32px,3.6vw,50px); line-height:1.12; margin:0 0 16px;
+  overflow-wrap:break-word; hyphens:auto;
+}
+.service-intro > p { font-size:16px; line-height:1.65; max-width:720px; }
+
+@media(max-width:700px) {
+  .page-hero.page-hero-photo { padding-top:64px; }
+  .section.service-detail-section { padding-top:28px; }
+  .service-intro { margin-bottom:24px; }
+  .service-back { margin-bottom:14px; min-height:40px; }
+  .service-intro > p { font-size:14px; }
+  .page-hero-photo > .page-hero-image { object-position:var(--hero-position-mobile,74% 50%); }
+  .page-hero-photo::before {
+    background:linear-gradient(90deg,rgba(3,19,14,.91),rgba(3,19,14,.67) 65%,rgba(3,19,14,.48)),
+      linear-gradient(0deg,rgba(3,19,14,.35),transparent 70%);
+  }
+  .hero-slider #hero-bau .hero-image { object-position:76% center; }
+  .hero-slider #hero-garten .hero-image { object-position:72% center; }
+  .hero-slider #hero-maschine .hero-image { object-position:76% center; }
+  .trust-items span { min-width:0; }
+}
