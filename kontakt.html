@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Kontakt &amp; Projektanfrage | WOLF Dienstleistungen</title><meta content="Kontaktieren Sie WOLF Dienstleistungen in Murrhardt: +49 1511 8172739, info@wolf-landschaftspflege.de. Jetzt Ihr Projekt besprechen." name="description"/><meta content="#004b30" name="theme-color"/><link href="https://wolf-dienstleistungen.de/kontakt.html" rel="canonical"/><meta content="website" property="og:type"/><meta content="de_DE" property="og:locale"/><meta content="Kontakt &amp; Projektanfrage | WOLF Dienstleistungen" property="og:title"/><meta content="Kontaktieren Sie WOLF Dienstleistungen in Murrhardt: +49 1511 8172739, info@wolf-landschaftspflege.de. Jetzt Ihr Projekt besprechen." property="og:description"/><meta content="https://wolf-dienstleistungen.de/kontakt.html" property="og:url"/><meta content="https://wolf-dienstleistungen.de/assets/heroes/kontakt.webp" property="og:image"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/><link href="assets/style.css?v=6" rel="stylesheet"/><link href="assets/hero-slider.css?v=3" rel="stylesheet"/><script defer="" src="assets/site.js?v=11"></script><script defer src="assets/babin-reveal.js?v=1"></script><link href="assets/hero-upgrade.css?v=2" rel="stylesheet"/><link href="assets/layout-refinement.css?v=9" rel="stylesheet"/><link href="assets/contact-location.css?v=3" rel="stylesheet"/><style>
+<html lang="de"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>Kontakt &amp; Projektanfrage | WOLF Dienstleistungen</title><meta content="Kontaktieren Sie WOLF Dienstleistungen in Murrhardt: +49 1511 8172739, info@wolf-landschaftspflege.de. Jetzt Ihr Projekt besprechen." name="description"/><meta content="#004b30" name="theme-color"/><link href="https://wolf-dienstleistungen.de/kontakt.html" rel="canonical"/><meta content="website" property="og:type"/><meta content="de_DE" property="og:locale"/><meta content="Kontakt &amp; Projektanfrage | WOLF Dienstleistungen" property="og:title"/><meta content="Kontaktieren Sie WOLF Dienstleistungen in Murrhardt: +49 1511 8172739, info@wolf-landschaftspflege.de. Jetzt Ihr Projekt besprechen." property="og:description"/><meta content="https://wolf-dienstleistungen.de/kontakt.html" property="og:url"/><meta content="https://wolf-dienstleistungen.de/assets/heroes/kontakt.webp" property="og:image"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/><link href="assets/style.css?v=6" rel="stylesheet"/><link href="assets/hero-slider.css?v=3" rel="stylesheet"/><script defer="" src="assets/site.js?v=12"></script><script defer src="assets/babin-reveal.js?v=1"></script><link href="assets/hero-upgrade.css?v=2" rel="stylesheet"/><link href="assets/layout-refinement.css?v=9" rel="stylesheet"/><link href="assets/contact-location.css?v=3" rel="stylesheet"/><style>
 /* Etwas kleinere Schrift nur für den Hinweis unter dem Kontaktformular. */
 .contact-form .form-reassurance strong {
   font-size: 0.9375rem;
@@ -10,69 +10,44 @@
   line-height: 1.55;
 }
 
-/* Bestätigung direkt unter dem Senden-Button – keine Weiterleitung. */
+/* Dezente Bestätigung direkt unter dem Button, bewusst ohne Häkchen oder Symbol. */
 .contact-form .form-result[hidden],
 .contact-form .form-result .form-fallback[hidden] { display: none !important; }
 .contact-form .form-result {
-  margin-top: 14px;
-  margin-bottom: 10px;
-  padding: 15px 17px;
-  border: 1px solid #b7d8c4;
-  border-radius: 12px;
-  background: #edf7f0;
-  color: #124c31;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  padding: 9px 12px;
+  border: 1px solid #c9e1d0;
+  border-radius: 8px;
+  background: #f2f9f4;
+  color: #1f603e;
 }
 .contact-form .form-result > p {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  display: block;
   margin: 0;
-  font-size: 0.96rem;
-  line-height: 1.55;
-  font-weight: 650;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  font-weight: 500;
 }
-.contact-form .form-result > p::before {
-  content: "✓";
-  display: inline-grid;
-  flex: 0 0 23px;
-  place-items: center;
-  width: 23px;
-  height: 23px;
-  margin-top: 1px;
-  border-radius: 50%;
-  color: #fff;
-  background: #16804c;
-  font-weight: 800;
-  font-size: 14px;
-}
+.contact-form .form-result > p::before { content: none !important; display: none !important; }
 .contact-form .form-result[data-state="pending"] {
-  color: #354657;
-  border-color: #d6dde3;
-  background: #f5f7f9;
-}
-.contact-form .form-result[data-state="pending"] > p::before {
-  content: "…";
-  background: #5d7185;
+  color: #445366;
+  border-color: #d8dfe5;
+  background: #f7f8fa;
 }
 .contact-form .form-result[data-state="error"] {
-  color: #8b2525;
-  border-color: #f0c1c1;
-  background: #fff3f3;
-}
-.contact-form .form-result[data-state="error"] > p::before {
-  content: "!";
-  background: #b63636;
+  color: #922b2b;
+  border-color: #ebc4c4;
+  background: #fff4f4;
 }
 .contact-form .form-result .form-fallback:not([hidden]) {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 16px;
-  margin-top: 12px;
+  gap: 8px 13px;
+  margin-top: 10px;
 }
 .contact-form .form-result .form-fallback a,
-.contact-form .form-result .form-fallback button {
-  font-size: 0.88rem;
-}
+.contact-form .form-result .form-fallback button { font-size: 0.82rem; }
 </style></head><body><a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 <header class="site-header"><div class="container header-inner"><a aria-label="WOLF Dienstleistungen – zur Startseite" class="brand" href="index.html"><img class="brand-logo" src="assets/wolf-logo.png" alt="WOLF Dienstleistungen" width="1774" height="887" decoding="async"/></a>
 <button aria-controls="hauptnavigation" aria-expanded="false" aria-label="Menü öffnen" class="menu-toggle" type="button"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button>
