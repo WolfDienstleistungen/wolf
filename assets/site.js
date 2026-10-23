@@ -118,7 +118,7 @@
         }
 
         form.reset();
-        showResult('success', 'Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet.');
+        showResult('success', 'Ihre Anfrage wurde erfolgreich gesendet.');
       } catch (error) {
         showResult('error', 'Der Versand war nicht möglich. Bitte prüfen Sie Ihre Internetverbindung oder nutzen Sie die E-Mail-Alternative.');
       } finally {
