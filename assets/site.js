@@ -44,10 +44,7 @@
     const recipient = 'info@wolf-landschaftspflege.de';
     const result = form.querySelector('.form-result');
     const fallback = result.querySelector('.form-fallback');
-    const submitButton = form.querySelector('button[type="submit"]');
-    const initialButtonHTML = submitButton.innerHTML;
     let messageText = '';
-    let sending = false;
 
     const showResult = (state, text) => {
       result.hidden = false;
@@ -56,65 +53,32 @@
       fallback.hidden = state !== 'error';
     };
 
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      if (sending || !form.reportValidity()) return;
+    // Use the HTML form's normal POST action, not AJAX/fetch.
+    // This allows FormSubmit to show its actual activation, CAPTCHA or error page.
+    form.addEventListener('submit', e => {
+      if (!form.reportValidity()) { e.preventDefault(); return; }
       const data = new FormData(form);
       const get = key => String(data.get(key) || '').trim();
-      if (get('_honey')) return; // Spam trap; never submit the hidden field if it is filled.
+      if (get('_honey')) { e.preventDefault(); return; }
 
       messageText = `Guten Tag WOLF Dienstleistungen,\n\nich möchte folgendes Projekt anfragen.\n\nName: ${get('name')}\nE-Mail: ${get('email')}\nTelefon: ${get('phone') || 'nicht angegeben'}\nLeistung: ${get('service')}\nOrt: ${get('location') || 'noch offen'}\n\n${get('message')}\n\nFreundliche Grüße\n${get('name')}`;
       const subject = `Projektanfrage: ${get('service')} – ${get('name')}`;
       form.querySelector('.whatsapp-message').href = 'https://wa.me/4915118172739?text=' + encodeURIComponent(messageText);
       form.querySelector('.email-message').href = 'mailto:' + recipient + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(messageText);
 
+      // The subject is sent along with the standard HTML form.
+      const subjectInput = form.querySelector('input[name="_subject"]');
+      if (subjectInput) subjectInput.value = subject;
+
       if (window.location.protocol === 'file:') {
-        showResult('error', 'Der direkte Formularversand funktioniert erst, wenn die Website online über HTTPS erreichbar ist. Bis dahin können Sie die Anfrage per E-Mail öffnen oder kopieren.');
+        e.preventDefault();
+        showResult('error', 'Der Versand funktioniert erst, wenn die Website online über HTTPS geöffnet wird. Bis dahin können Sie die Nachricht per E-Mail öffnen oder kopieren.');
         return;
       }
 
-      sending = true;
-      submitButton.disabled = true;
-      submitButton.textContent = 'Wird gesendet …';
-      showResult('pending', 'Ihre Anfrage wird gerade gesendet …');
-
-      try {
-        const response = await fetch('https://formsubmit.co/ajax/' + recipient, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            name: get('name'),
-            email: get('email'),
-            phone: get('phone'),
-            service: get('service'),
-            location: get('location'),
-            message: get('message'),
-            _subject: subject,
-            _replyto: get('email'),
-            _template: 'table',
-            _honey: ''
-          })
-        });
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        const answer = await response.json();
-        // FormSubmit returns the string "false" for some failed requests with HTTP 200.
-        if (answer.success !== true && answer.success !== 'true') {
-          if (/activat|bestätig|confirm/i.test(String(answer.message || ''))) {
-            showResult('error', 'Der Empfang muss zuerst über eine Aktivierungs-E-Mail an ' + recipient + ' bestätigt werden. Bis zur Aktivierung ist die Zustellung nicht bestätigt. Bitte wenden Sie sich andernfalls direkt per E-Mail an uns.');
-          } else {
-            showResult('error', 'Die Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es erneut oder nutzen Sie die E-Mail-Alternative.');
-          }
-          return;
-        }
-        form.reset();
-        showResult('success', 'Vielen Dank! Der Versanddienst hat Ihre Anfrage angenommen. Wir melden uns schnellstmöglich bei Ihnen.');
-      } catch {
-        showResult('error', 'Die Anfrage konnte nicht übermittelt werden. Bitte prüfen Sie Ihre Internetverbindung oder senden Sie die vorbereitete Nachricht über Ihre E-Mail-App.');
-      } finally {
-        sending = false;
-        submitButton.disabled = false;
-        submitButton.innerHTML = initialButtonHTML;
-      }
+      // Intentionally do not call preventDefault(): the browser submits
+      // the form to https://formsubmit.co/... via method="POST".
+      result.hidden = true;
     });
 
     form.querySelector('.copy-message')?.addEventListener('click', async () => {
@@ -137,8 +101,8 @@
         manual.value = messageText; manual.focus(); manual.select();
       }
     });
-    form.addEventListener('input', () => { if (!sending) result.hidden = true; });
-    form.addEventListener('change', () => { if (!sending) result.hidden = true; });
+    form.addEventListener('input', () => { result.hidden = true; });
+    form.addEventListener('change', () => { result.hidden = true; });
   });
 
   const dialog = document.querySelector('.gallery-dialog');
