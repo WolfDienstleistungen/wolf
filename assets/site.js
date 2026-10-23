@@ -54,12 +54,12 @@
     };
 
     // Use the HTML form's normal POST action, not AJAX/fetch.
-    // This allows FormSubmit to show its actual activation, CAPTCHA or error page.
+    // This allows Formspree to show its actual confirmation, CAPTCHA or error page.
     form.addEventListener('submit', e => {
       if (!form.reportValidity()) { e.preventDefault(); return; }
       const data = new FormData(form);
       const get = key => String(data.get(key) || '').trim();
-      if (get('_honey')) { e.preventDefault(); return; }
+      if (get('_gotcha')) { e.preventDefault(); return; }
 
       messageText = `Guten Tag WOLF Dienstleistungen,\n\nich möchte folgendes Projekt anfragen.\n\nName: ${get('name')}\nE-Mail: ${get('email')}\nTelefon: ${get('phone') || 'nicht angegeben'}\nLeistung: ${get('service')}\nOrt: ${get('location') || 'noch offen'}\n\n${get('message')}\n\nFreundliche Grüße\n${get('name')}`;
       const subject = `Projektanfrage: ${get('service')} – ${get('name')}`;
@@ -67,9 +67,16 @@
       form.querySelector('.email-message').href = 'mailto:' + recipient + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(messageText);
 
       // The subject is sent along with the standard HTML form.
-      const subjectInput = form.querySelector('input[name="_subject"]');
+      const subjectInput = form.querySelector('input[name="subject"]');
       if (subjectInput) subjectInput.value = subject;
 
+      // The form ID is provided by Formspree after creating a form. Never
+      // submit to an unfinished example endpoint (or a URL from another host).
+      if (!/^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(form.action)) {
+        e.preventDefault();
+        showResult('error', 'Das Formular ist noch nicht mit Formspree verbunden. Bitte tragen Sie zuerst die Formspree-Form-ID in kontakt.html ein. Alternativ können Sie uns direkt per E-Mail kontaktieren.');
+        return;
+      }
       if (window.location.protocol === 'file:') {
         e.preventDefault();
         showResult('error', 'Der Versand funktioniert erst, wenn die Website online über HTTPS geöffnet wird. Bis dahin können Sie die Nachricht per E-Mail öffnen oder kopieren.');
@@ -77,7 +84,7 @@
       }
 
       // Intentionally do not call preventDefault(): the browser submits
-      // the form to https://formsubmit.co/... via method="POST".
+      // the form to the Formspree endpoint via method="POST".
       result.hidden = true;
     });
 
