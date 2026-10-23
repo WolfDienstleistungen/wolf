@@ -41,7 +41,7 @@
   const chosen = new URLSearchParams(window.location.search).get('leistung');
   document.querySelectorAll('[data-contact-form]').forEach(form => {
     if (chosen && serviceNames[chosen]) form.elements.service.value = serviceNames[chosen];
-    const recipient = 'info@wolf-landschaftspflege.de';
+    const recipient = 'yaiaiiauaja@gmail.com';
     const result = form.querySelector('.form-result');
     const fallback = result.querySelector('.form-fallback');
     let messageText = '';
