@@ -41,75 +41,128 @@
   const chosen = new URLSearchParams(window.location.search).get('leistung');
   document.querySelectorAll('[data-contact-form]').forEach(form => {
     if (chosen && serviceNames[chosen]) form.elements.service.value = serviceNames[chosen];
+
     const recipient = 'info@wolf-landschaftspflege.de';
     const result = form.querySelector('.form-result');
     const fallback = result.querySelector('.form-fallback');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonHTML = submitButton.innerHTML;
+    let sending = false;
     let messageText = '';
 
-    const showResult = (state, text) => {
+    function showResult(state, message) {
       result.hidden = false;
       result.dataset.state = state;
-      result.querySelector('p').textContent = text;
+      result.querySelector('p').textContent = message;
       fallback.hidden = state !== 'error';
-    };
+    }
 
-    // Use the HTML form's normal POST action, not AJAX/fetch.
-    // This allows Formspree to show its actual confirmation, CAPTCHA or error page.
-    form.addEventListener('submit', e => {
-      if (!form.reportValidity()) { e.preventDefault(); return; }
+    function hideResult() {
+      if (!sending) result.hidden = true;
+    }
+
+    form.addEventListener('submit', async event => {
+      // AJAX: keep the visitor on kontakt.html instead of following Formspree's thank-you page.
+      event.preventDefault();
+      if (sending || !form.reportValidity()) return;
+
       const data = new FormData(form);
       const get = key => String(data.get(key) || '').trim();
-      if (get('_gotcha')) { e.preventDefault(); return; }
+      if (get('_gotcha')) return; // Honeypot: ignore suspected bots.
 
       messageText = `Guten Tag WOLF Dienstleistungen,\n\nich möchte folgendes Projekt anfragen.\n\nName: ${get('name')}\nE-Mail: ${get('email')}\nTelefon: ${get('phone') || 'nicht angegeben'}\nLeistung: ${get('service')}\nOrt: ${get('location') || 'noch offen'}\n\n${get('message')}\n\nFreundliche Grüße\n${get('name')}`;
       const subject = `Projektanfrage: ${get('service')} – ${get('name')}`;
-      form.querySelector('.whatsapp-message').href = 'https://wa.me/4915118172739?text=' + encodeURIComponent(messageText);
-      form.querySelector('.email-message').href = 'mailto:' + recipient + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(messageText);
-
-      // The subject is sent along with the standard HTML form.
+      const whatsappLink = form.querySelector('.whatsapp-message');
+      const emailLink = form.querySelector('.email-message');
+      whatsappLink.href = 'https://wa.me/4915118172739?text=' + encodeURIComponent(messageText);
+      emailLink.href = 'mailto:' + recipient + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(messageText);
       const subjectInput = form.querySelector('input[name="subject"]');
       if (subjectInput) subjectInput.value = subject;
 
-      // The form ID is provided by Formspree after creating a form. Never
-      // submit to an unfinished example endpoint (or a URL from another host).
-      if (!/^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(form.action)) {
-        e.preventDefault();
-        showResult('error', 'Das Formular ist noch nicht mit Formspree verbunden. Bitte tragen Sie zuerst die Formspree-Form-ID in kontakt.html ein. Alternativ können Sie uns direkt per E-Mail kontaktieren.');
+      if (form.action !== 'https://formspree.io/f/xyeegroe') {
+        showResult('error', 'Das Kontaktformular ist nicht korrekt eingerichtet. Bitte kontaktieren Sie uns direkt per E-Mail.');
         return;
       }
       if (window.location.protocol === 'file:') {
-        e.preventDefault();
-        showResult('error', 'Der Versand funktioniert erst, wenn die Website online über HTTPS geöffnet wird. Bis dahin können Sie die Nachricht per E-Mail öffnen oder kopieren.');
+        showResult('error', 'Bitte öffnen Sie die Website online über HTTPS. Der direkte Versand funktioniert nicht aus einer lokalen HTML-Datei.');
         return;
       }
 
-      // Intentionally do not call preventDefault(): the browser submits
-      // the form to the Formspree endpoint via method="POST".
-      result.hidden = true;
+      sending = true;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Wird gesendet …';
+      showResult('pending', 'Ihre Anfrage wird gesendet …');
+
+      try {
+        // Formspree supports cross-origin AJAX when Accept: application/json is set.
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (!response.ok) {
+          if (response.status === 429) {
+            showResult('error', 'Zu viele Anfragen in kurzer Zeit. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.');
+          } else {
+            showResult('error', 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder nutzen Sie die E-Mail-Alternative.');
+          }
+          return;
+        }
+
+        // Some failed integrations may return a JSON error with an HTTP 200.
+        const payload = await response.json().catch(() => null);
+        if (payload && (payload.ok === false || payload.success === false || (Array.isArray(payload.errors) && payload.errors.length))) {
+          showResult('error', 'Die Anfrage wurde vom Versanddienst nicht angenommen. Bitte prüfen Sie Ihre Angaben und versuchen Sie es erneut.');
+          return;
+        }
+
+        form.reset();
+        showResult('success', 'Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet.');
+      } catch (error) {
+        showResult('error', 'Der Versand war nicht möglich. Bitte prüfen Sie Ihre Internetverbindung oder nutzen Sie die E-Mail-Alternative.');
+      } finally {
+        sending = false;
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonHTML;
+      }
     });
 
     form.querySelector('.copy-message')?.addEventListener('click', async () => {
       const status = result.querySelector('p');
       try {
-        if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(messageText);
-        else {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(messageText);
+        } else {
           const area = document.createElement('textarea');
-          area.value = messageText; area.setAttribute('readonly', '');
-          area.style.position = 'fixed'; area.style.left = '-9999px';
-          document.body.append(area); area.select();
-          const copied = document.execCommand('copy'); area.remove();
+          area.value = messageText;
+          area.setAttribute('readonly', '');
+          area.style.position = 'fixed';
+          area.style.left = '-9999px';
+          document.body.append(area);
+          area.select();
+          const copied = document.execCommand('copy');
+          area.remove();
           if (!copied) throw new Error('copy failed');
         }
         status.textContent = 'Nachricht kopiert. Fügen Sie sie in eine E-Mail an ' + recipient + ' ein und senden Sie sie dort ab.';
       } catch {
-        status.textContent = 'Automatisches Kopieren ist hier nicht möglich. Sie können diesen Text manuell kopieren:';
+        status.textContent = 'Kopieren Sie den folgenden Text manuell:';
         let manual = form.querySelector('.manual-copy');
-        if (!manual) { manual = document.createElement('textarea'); manual.className = 'manual-copy'; manual.setAttribute('aria-label', 'Nachricht zum Kopieren'); manual.rows = 8; result.append(manual); }
-        manual.value = messageText; manual.focus(); manual.select();
+        if (!manual) {
+          manual = document.createElement('textarea');
+          manual.className = 'manual-copy';
+          manual.setAttribute('aria-label', 'Nachricht zum Kopieren');
+          manual.rows = 8;
+          result.append(manual);
+        }
+        manual.value = messageText;
+        manual.focus();
+        manual.select();
       }
     });
-    form.addEventListener('input', () => { result.hidden = true; });
-    form.addEventListener('change', () => { result.hidden = true; });
+    form.addEventListener('input', hideResult);
+    form.addEventListener('change', hideResult);
   });
 
   const dialog = document.querySelector('.gallery-dialog');
